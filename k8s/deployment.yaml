@@ -5,6 +5,7 @@ metadata:
   labels:
     app: pal-tracker
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: pal-tracker
@@ -23,11 +24,19 @@ spec:
             httpGet:
               path: /actuator/health/readiness
               port: 8080
+          livenessProbe:
+            httpGet:
+              path: /actuator/health/liveness
+              port: 8080
           lifecycle:
             preStop:
               exec:
                 command: [ "/bin/sleep", "10" ]
           env:
+            - name: MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE
+              value: "*"
+            - name: MANAGEMENT_ENDPOINT_HEALTH_GROUP_READINESS_INCLUDE
+              value: "backingService"
             - name: WELCOME_MESSAGE
               valueFrom:
                 configMapKeyRef:
