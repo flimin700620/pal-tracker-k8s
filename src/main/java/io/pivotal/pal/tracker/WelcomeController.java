@@ -12,11 +12,13 @@ public class WelcomeController {
     public WelcomeController(
             @Value("${welcome.message}") String welcomeMessage
     ) {
+
         this.welcomeMessage = welcomeMessage;
     }
 
     @GetMapping("/")
-    public String sayHello() {
+    public String sayHello() throws InterruptedException {
+        Thread.sleep(500);
         return welcomeMessage;
     }
 }

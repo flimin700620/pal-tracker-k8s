@@ -5,6 +5,7 @@ metadata:
   labels:
     app: pal-tracker
 spec:
+  replicas: 1
   selector:
     matchLabels:
       app: pal-tracker
@@ -18,7 +19,7 @@ spec:
     spec:
       containers:
         - name: pal-tracker-container
-          image: raymondfanglimin/pal-tracker:v3
+          image: raymondfanglimin/pal-tracker:v4
           readinessProbe:
             httpGet:
               path: /actuator/health/readiness
