@@ -1,0 +1,52 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"networking.k8s.io/v1beta1","kind":"Ingress","metadata":{"annotations":{"kubernetes.io/ingress.class":"nginx"},"labels":{"app":"pal-tracker"},"name":"pal-tracker-review","namespace":"review"},"spec":{"backend":{"serviceName":"pal-tracker-review","servicePort":8080},"rules":[{"host":"review.3.101.34.232.nip.io","http":{"paths":[{"backend":{"serviceName":"pal-tracker-review","servicePort":8080},"path":"/"}]}}]}}
+    kubernetes.io/ingress.class: nginx
+  creationTimestamp: "2020-11-14T01:27:11Z"
+  generation: 1
+  labels:
+    app: pal-tracker
+  managedFields:
+  - apiVersion: networking.k8s.io/v1beta1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+          f:kubernetes.io/ingress.class: {}
+        f:labels:
+          .: {}
+          f:app: {}
+      f:spec:
+        f:backend:
+          .: {}
+          f:serviceName: {}
+          f:servicePort: {}
+        f:rules: {}
+    manager: kubectl
+    operation: Update
+    time: "2020-11-14T01:27:11Z"
+  name: pal-tracker-review
+  namespace: review
+  resourceVersion: "1002843"
+  selfLink: /apis/extensions/v1beta1/namespaces/review/ingresses/pal-tracker-review
+  uid: 19e48278-3a18-4313-9061-fc74371a6935
+spec:
+  backend:
+    serviceName: pal-tracker-review
+    servicePort: 8080
+  rules:
+  - host: review.3.101.34.232.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: pal-tracker-review
+          servicePort: 8080
+        path: /
+        pathType: ImplementationSpecific
+status:
+  loadBalancer: {}
